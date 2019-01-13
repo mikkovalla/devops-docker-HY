@@ -11,6 +11,6 @@ services:
     ports:
     - 8000:8000
     volumes:
-    - ./logs:/app/logs
+    - ../../part-1/1.6//backend-example-docker-master/logs.txt:/usr/src/app/logs.txt
     environment:
     - FRONT_URL=http://localhost:5000
