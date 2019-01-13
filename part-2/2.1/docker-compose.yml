@@ -1,0 +1,16 @@
+version: "3"
+services:
+  frontend:
+    build: ../../part-1/1.5/frontend-example-docker-master
+    ports:
+    - 5000:5000
+    environment:
+    - API_URL=http://localhost:8000
+  backend:
+    build: ../../part-1/1.6/backend-example-docker-master
+    ports:
+    - 8000:8000
+    volumes:
+    - ./logs:/app/logs
+    environment:
+    - FRONT_URL=http://localhost:5000
