@@ -1,10 +1,10 @@
-FROM node:latest
-COPY package*.json /app/
-WORKDIR /app
-ENV FRONT_URL=http://localhost:5000
+FROM ubuntu:16.04 
+RUN apt-get update && apt-get install -y curl 
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+RUN apt install -y nodejs
+WORKDIR /usr/src/app
+COPY package*.json ./
 RUN npm install
-COPY . /app/
+COPY . .
 EXPOSE 8000
-RUN rm /app/logs.txt && ln -s /app/logs/logs.txt /app/logs.txt
-VOLUME /app/logs
-CMD ["npm", "start"]
+CMD [ "npm", "start" ]
