@@ -18,12 +18,13 @@ services:
      - DB_USERNAME=postgres
      - DB_PASSWORD=messagermessagesdb
      - DB_HOST=messager
-    links:
+    depends_on:
      - redis
-     - postgres-db:messager
+     - postgres-db
   redis:
     image: redis:alpine
   postgres-db:
     image: postgres
+    restart: always
     environment:
      - POSTGRES_PASSWORD=messagermessagesdb
